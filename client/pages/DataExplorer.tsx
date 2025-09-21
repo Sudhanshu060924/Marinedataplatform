@@ -63,7 +63,16 @@ function applyFilters(rows: Row[], f: FilterState) {
   });
 }
 
-function Table({ rows }: { rows: Row[] }) {
+type SortKey = "Species Name" | "Scientific Name" | "Zone" | "Location" | "Sample Type" | "Date";
+interface SortState { key: SortKey; dir: "asc" | "desc"; }
+
+function getLatLng(location: string): { lat: number; lng: number } | null {
+  const m = location.match(/(-?\d+\.?\d*),\s*(-?\d+\.?\d*)/);
+  if (!m) return null;
+  return { lat: parseFloat(m[1]), lng: parseFloat(m[2]) };
+}
+
+function Table({ rows, sort, onSort }: { rows: Row[]; sort: SortState; onSort: (k: SortKey) => void }) {
   return (
     <div className="overflow-auto rounded-md border">
       <table className="min-w-full text-sm">
