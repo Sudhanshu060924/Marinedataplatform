@@ -123,8 +123,10 @@ export default function DataExplorer() {
   const [filters, setFilters] = useState<FilterState>({ species: "", zone: "", from: "", to: "" });
   const [visible, setVisible] = useState(30);
 
+  const [sort, setSort] = useState<SortState>({ key: "Date", dir: "desc" });
   const filtered = useMemo(() => applyFilters(all, filters), [all, filters]);
-  const pageRows = filtered.slice(0, visible);
+  const sorted = useMemo(() => sortRows(filtered, sort), [filtered, sort]);
+  const pageRows = sorted.slice(0, visible);
 
   return (
     <div className="space-y-6">
