@@ -152,8 +152,8 @@ export default function DataExplorer() {
           <CardTitle>Results ({filtered.length.toLocaleString()})</CardTitle>
         </CardHeader>
         <CardContent>
-          <Table rows={pageRows} />
-          {visible < filtered.length && (
+          <Table rows={pageRows} sort={sort} onSort={(k)=> setSort(s => s.key===k ? { key:k, dir: s.dir === "asc" ? "desc" : "asc" } : { key:k, dir:"asc" })} />
+          {visible < sorted.length && (
             <div className="pt-4 flex justify-center">
               <Button onClick={() => setVisible(v => v + 30)}>Show more</Button>
             </div>
