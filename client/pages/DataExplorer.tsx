@@ -167,7 +167,9 @@ export default function DataExplorer() {
 export function DataExplorerFull() {
   const all = useDataset();
   const [filters, setFilters] = useState<FilterState>({ species: "", zone: "", from: "", to: "" });
+  const [sort, setSort] = useState<SortState>({ key: "Date", dir: "desc" });
   const filtered = useMemo(() => applyFilters(all, filters), [all, filters]);
+  const sorted = useMemo(() => sortRows(filtered, sort), [filtered, sort]);
   return (
     <div className="space-y-6">
       <div className="flex items-baseline justify-between">
