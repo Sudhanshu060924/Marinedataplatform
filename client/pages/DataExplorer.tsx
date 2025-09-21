@@ -94,7 +94,9 @@ function Table({ rows, sort, onSort }: { rows: Row[]; sort: SortState; onSort: (
               <td className="px-3 py-2">{r["Species Name"]}</td>
               <td className="px-3 py-2">{r["Scientific Name"]}</td>
               <td className="px-3 py-2">{r.Zone}</td>
-              <td className="px-3 py-2">{r.Location}</td>
+              <td className="px-3 py-2">{(() => { const ll = getLatLng(r.Location); return ll ? (
+                <a className="text-primary hover:underline" href={`https://www.google.com/maps?q=${ll.lat},${ll.lng}`} target="_blank" rel="noreferrer">{r.Location}</a>
+              ) : r.Location; })()}</td>
               <td className="px-3 py-2">{r["Sample Type"]}</td>
               <td className="px-3 py-2">{r.Date}</td>
             </tr>
