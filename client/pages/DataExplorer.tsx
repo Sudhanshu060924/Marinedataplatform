@@ -78,12 +78,14 @@ function Table({ rows, sort, onSort }: { rows: Row[]; sort: SortState; onSort: (
       <table className="min-w-full text-sm">
         <thead className="bg-secondary/50">
           <tr className="text-left">
-            <th className="px-3 py-2 whitespace-nowrap">Species Name</th>
-            <th className="px-3 py-2 whitespace-nowrap">Scientific Name</th>
-            <th className="px-3 py-2 whitespace-nowrap">Zone</th>
-            <th className="px-3 py-2 whitespace-nowrap">Location</th>
-            <th className="px-3 py-2 whitespace-nowrap">Sample Type</th>
-            <th className="px-3 py-2 whitespace-nowrap">Date</th>
+            {(["Species Name","Scientific Name","Zone","Location","Sample Type","Date"] as SortKey[]).map((k)=> (
+              <th key={k} className="px-3 py-2 whitespace-nowrap cursor-pointer select-none" onClick={()=>onSort(k)}>
+                <span className="inline-flex items-center gap-1">
+                  {k}
+                  {sort.key===k && (<span className="text-muted-foreground">{sort.dir === "asc" ? "▲" : "▼"}</span>)}
+                </span>
+              </th>
+            ))}
           </tr>
         </thead>
         <tbody>
