@@ -107,6 +107,17 @@ function Table({ rows, sort, onSort }: { rows: Row[]; sort: SortState; onSort: (
   );
 }
 
+function sortRows(rows: Row[], sort: SortState): Row[] {
+  const { key, dir } = sort;
+  const mul = dir === "asc" ? 1 : -1;
+  return [...rows].sort((a, b) => {
+    const va = key === "Date" ? new Date(a.Date).getTime() : key === "Location" ? (getLatLng(a.Location)?.lat ?? 0) : (a as any)[key];
+    const vb = key === "Date" ? new Date(b.Date).getTime() : key === "Location" ? (getLatLng(b.Location)?.lat ?? 0) : (b as any)[key];
+    if (typeof va === "number" && typeof vb === "number") return (va - vb) * mul;
+    return String(va).localeCompare(String(vb)) * mul;
+  });
+}
+
 export default function DataExplorer() {
   const all = useDataset();
   const [filters, setFilters] = useState<FilterState>({ species: "", zone: "", from: "", to: "" });
