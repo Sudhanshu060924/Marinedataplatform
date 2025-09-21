@@ -192,7 +192,7 @@ export function DataExplorerFull() {
         </CardHeader>
         <CardContent>
           <div className="max-h-[70vh] overflow-auto">
-            <Table rows={filtered} />
+            <Table rows={sorted} sort={sort} onSort={(k)=> setSort(s => s.key===k ? { key:k, dir: s.dir === "asc" ? "desc" : "asc" } : { key:k, dir:"asc" })} />
           </div>
         </CardContent>
       </Card>
