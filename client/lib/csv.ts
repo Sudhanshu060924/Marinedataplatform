@@ -31,7 +31,8 @@ function splitCsvLine(line: string): string[] {
   for (let i = 0; i < line.length; i++) {
     const ch = line[i];
     if (ch === '"') {
-      if (inQuotes && line[i + 1] === '"') { // escaped quote
+      if (inQuotes && line[i + 1] === '"') {
+        // escaped quote
         current += '"';
         i++;
       } else {
@@ -49,14 +50,32 @@ function splitCsvLine(line: string): string[] {
 }
 
 export function downloadCsv(rows: Row[], filename = "data.csv") {
-  const header = ["Species Name","Scientific Name","Zone","Location","Sample Type","Date"];
+  const header = [
+    "Species Name",
+    "Scientific Name",
+    "Zone",
+    "Location",
+    "Sample Type",
+    "Date",
+  ];
   const csv = [header.join(",")]
     .concat(
-      rows.map(r =>
-        [r["Species Name"], r["Scientific Name"], r.Zone, r.Location, r["Sample Type"], r.Date]
-          .map((v) => (/,|\"/.test(String(v)) ? `"${String(v).replace(/\"/g, '""')}"` : String(v)))
-          .join(",")
-      )
+      rows.map((r) =>
+        [
+          r["Species Name"],
+          r["Scientific Name"],
+          r.Zone,
+          r.Location,
+          r["Sample Type"],
+          r.Date,
+        ]
+          .map((v) =>
+            /,|\"/.test(String(v))
+              ? `"${String(v).replace(/\"/g, '""')}"`
+              : String(v),
+          )
+          .join(","),
+      ),
     )
     .join("\n");
   const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });

@@ -30,7 +30,12 @@ export const sampleTypeDistribution = [
   { type: "Sediment", value: 5 },
 ];
 
-export interface MapPoint { lat: number; lng: number; label: string; zone: string; }
+export interface MapPoint {
+  lat: number;
+  lng: number;
+  label: string;
+  zone: string;
+}
 
 export const sightingsPoints: MapPoint[] = [
   { lat: 16.1037, lng: 84.4794, label: "Coral Fish", zone: "Andaman Sea" },

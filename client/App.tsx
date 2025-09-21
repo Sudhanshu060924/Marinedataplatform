@@ -30,10 +30,37 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/data-explorer" element={<DataExplorer />} />
-              <Route path="/data-explorer/full" element={<DataExplorerFull />} />
-              <Route path="/upload" element={<Placeholder title="Upload Data" description="CSV/Excel upload form with success toast coming next." />} />
-              <Route path="/ai-insights" element={<Placeholder title="AI Insights" description="Insight cards and trend projection chart coming next." />} />
-              <Route path="/profile" element={<Placeholder title="Profile" description="Simple profile page after login." />} />
+              <Route
+                path="/data-explorer/full"
+                element={<DataExplorerFull />}
+              />
+              <Route
+                path="/upload"
+                element={
+                  <Placeholder
+                    title="Upload Data"
+                    description="CSV/Excel upload form with success toast coming next."
+                  />
+                }
+              />
+              <Route
+                path="/ai-insights"
+                element={
+                  <Placeholder
+                    title="AI Insights"
+                    description="Insight cards and trend projection chart coming next."
+                  />
+                }
+              />
+              <Route
+                path="/profile"
+                element={
+                  <Placeholder
+                    title="Profile"
+                    description="Simple profile page after login."
+                  />
+                }
+              />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="*" element={<NotFound />} />

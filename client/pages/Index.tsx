@@ -13,14 +13,20 @@ export default function Index() {
               <Waves className="h-5 w-5" /> Marine Data Platform
             </div>
             <h1 className="mt-3 text-3xl md:text-5xl font-extrabold leading-tight tracking-tight text-slate-900">
-              AI-powered Unified Platform for Ocean, Fisheries, and Biodiversity Data
+              AI-powered Unified Platform for Ocean, Fisheries, and Biodiversity
+              Data
             </h1>
             <p className="mt-4 text-lg text-slate-600 max-w-2xl">
-              Explore integrated marine datasets, visualize trends, and upload your own research data with ease.
+              Explore integrated marine datasets, visualize trends, and upload
+              your own research data with ease.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button asChild size="lg"><Link to="/data-explorer">Explore Data</Link></Button>
-              <Button asChild size="lg" variant="secondary"><Link to="/upload">Upload Data</Link></Button>
+              <Button asChild size="lg">
+                <Link to="/data-explorer">Explore Data</Link>
+              </Button>
+              <Button asChild size="lg" variant="secondary">
+                <Link to="/upload">Upload Data</Link>
+              </Button>
             </div>
           </div>
         </div>
@@ -36,7 +42,9 @@ export default function Index() {
               </div>
               <div>
                 <div className="font-semibold">Ocean Data</div>
-                <p className="text-sm text-muted-foreground">Satellites, buoys, and in-situ observations</p>
+                <p className="text-sm text-muted-foreground">
+                  Satellites, buoys, and in-situ observations
+                </p>
               </div>
             </div>
           </div>
@@ -47,7 +55,9 @@ export default function Index() {
               </div>
               <div>
                 <div className="font-semibold">Fisheries</div>
-                <p className="text-sm text-muted-foreground">Catch reports and species distribution</p>
+                <p className="text-sm text-muted-foreground">
+                  Catch reports and species distribution
+                </p>
               </div>
             </div>
           </div>
@@ -58,7 +68,9 @@ export default function Index() {
               </div>
               <div>
                 <div className="font-semibold">Biodiversity</div>
-                <p className="text-sm text-muted-foreground">Genomics, surveys, and conservation status</p>
+                <p className="text-sm text-muted-foreground">
+                  Genomics, surveys, and conservation status
+                </p>
               </div>
             </div>
           </div>
@@ -69,11 +81,17 @@ export default function Index() {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
             <h3 className="text-xl font-bold">Get started</h3>
-            <p className="text-muted-foreground">Jump into the dashboard or explore data now.</p>
+            <p className="text-muted-foreground">
+              Jump into the dashboard or explore data now.
+            </p>
           </div>
           <div className="flex gap-3">
-            <Button asChild variant="outline"><Link to="/dashboard">Open Dashboard</Link></Button>
-            <Button asChild><Link to="/ai-insights">See AI Insights</Link></Button>
+            <Button asChild variant="outline">
+              <Link to="/dashboard">Open Dashboard</Link>
+            </Button>
+            <Button asChild>
+              <Link to="/ai-insights">See AI Insights</Link>
+            </Button>
           </div>
         </div>
       </section>

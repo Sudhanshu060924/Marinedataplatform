@@ -19,20 +19,39 @@ export default function Signup() {
   return (
     <div className="mx-auto max-w-md">
       <h1 className="text-2xl font-bold mb-2">Create your account</h1>
-      <p className="text-muted-foreground mb-6">Start exploring marine data in minutes.</p>
+      <p className="text-muted-foreground mb-6">
+        Start exploring marine data in minutes.
+      </p>
       <form onSubmit={onSubmit} className="space-y-4">
         <div>
           <label className="block text-sm font-medium mb-1">Email</label>
-          <Input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@example.com" />
+          <Input
+            type="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="you@example.com"
+          />
         </div>
         <div>
           <label className="block text-sm font-medium mb-1">Password</label>
-          <Input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Create a password" />
+          <Input
+            type="password"
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Create a password"
+          />
         </div>
-        <Button type="submit" className="w-full">Sign up</Button>
+        <Button type="submit" className="w-full">
+          Sign up
+        </Button>
       </form>
       <p className="mt-4 text-sm text-muted-foreground">
-        Already have an account? <Link to="/login" className="text-primary hover:underline">Login</Link>
+        Already have an account?{" "}
+        <Link to="/login" className="text-primary hover:underline">
+          Login
+        </Link>
       </p>
     </div>
   );

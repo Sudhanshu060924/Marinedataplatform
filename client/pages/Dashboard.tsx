@@ -1,5 +1,16 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { sstSeries, fishCatchBySpecies, sampleTypeDistribution, sightingsPoints } from "@/lib/demoData";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  sstSeries,
+  fishCatchBySpecies,
+  sampleTypeDistribution,
+  sightingsPoints,
+} from "@/lib/demoData";
 import MapView from "@/components/MapView";
 import {
   LineChart,
@@ -16,14 +27,25 @@ import {
   Cell,
 } from "recharts";
 
-const COLORS = ["#0ea5e9", "#14b8a6", "#6366f1", "#f59e0b", "#ef4444", "#10b981"];
+const COLORS = [
+  "#0ea5e9",
+  "#14b8a6",
+  "#6366f1",
+  "#f59e0b",
+  "#ef4444",
+  "#10b981",
+];
 
 export default function Dashboard() {
   return (
     <div className="space-y-8">
       <div className="flex items-baseline justify-between">
-        <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Dashboard</h1>
-        <p className="text-sm text-muted-foreground">Demo metrics and geospatial sightings</p>
+        <h1 className="text-2xl md:text-3xl font-bold tracking-tight">
+          Dashboard
+        </h1>
+        <p className="text-sm text-muted-foreground">
+          Demo metrics and geospatial sightings
+        </p>
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">
@@ -34,12 +56,21 @@ export default function Dashboard() {
           </CardHeader>
           <CardContent className="h-64">
             <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={sstSeries} margin={{ left: 8, right: 8, top: 8, bottom: 0 }}>
+              <LineChart
+                data={sstSeries}
+                margin={{ left: 8, right: 8, top: 8, bottom: 0 }}
+              >
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="month" />
                 <YAxis domain={[24, 30]} />
                 <Tooltip />
-                <Line type="monotone" dataKey="value" stroke="#0ea5e9" strokeWidth={2} dot={false} />
+                <Line
+                  type="monotone"
+                  dataKey="value"
+                  stroke="#0ea5e9"
+                  strokeWidth={2}
+                  dot={false}
+                />
               </LineChart>
             </ResponsiveContainer>
           </CardContent>
@@ -52,7 +83,10 @@ export default function Dashboard() {
           </CardHeader>
           <CardContent className="h-64">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={fishCatchBySpecies} margin={{ left: 8, right: 8, top: 8, bottom: 0 }}>
+              <BarChart
+                data={fishCatchBySpecies}
+                margin={{ left: 8, right: 8, top: 8, bottom: 0 }}
+              >
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="species" />
                 <YAxis />
@@ -73,7 +107,14 @@ export default function Dashboard() {
           <CardContent className="h-64">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
-                <Pie data={sampleTypeDistribution} dataKey="value" nameKey="type" cx="50%" cy="50%" outerRadius={90}>
+                <Pie
+                  data={sampleTypeDistribution}
+                  dataKey="value"
+                  nameKey="type"
+                  cx="50%"
+                  cy="50%"
+                  outerRadius={90}
+                >
                   {sampleTypeDistribution.map((_, i) => (
                     <Cell key={`cell-${i}`} fill={COLORS[i % COLORS.length]} />
                   ))}
