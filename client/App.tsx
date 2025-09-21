@@ -14,6 +14,7 @@ import Placeholder from "@/components/Placeholder";
 import Login from "@/pages/Login";
 import Signup from "@/pages/Signup";
 import { AuthProvider } from "@/context/AuthContext";
+import DataExplorer, { DataExplorerFull } from "@/pages/DataExplorer";
 
 const queryClient = new QueryClient();
 
@@ -28,7 +29,8 @@ const App = () => (
             <Route element={<MainLayout />}>
               <Route path="/" element={<Index />} />
               <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/data-explorer" element={<Placeholder title="Data Explorer" description="Table, filters, and CSV export coming next." />} />
+              <Route path="/data-explorer" element={<DataExplorer />} />
+              <Route path="/data-explorer/full" element={<DataExplorerFull />} />
               <Route path="/upload" element={<Placeholder title="Upload Data" description="CSV/Excel upload form with success toast coming next." />} />
               <Route path="/ai-insights" element={<Placeholder title="AI Insights" description="Insight cards and trend projection chart coming next." />} />
               <Route path="/profile" element={<Placeholder title="Profile" description="Simple profile page after login." />} />
