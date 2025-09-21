@@ -133,7 +133,7 @@ export default function DataExplorer() {
       <div className="flex items-baseline justify-between">
         <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Data Explorer</h1>
         <div className="flex gap-2">
-          <Button variant="outline" onClick={() => downloadCsv(filtered, "marine-data.csv")}>Export CSV</Button>
+          <Button variant="outline" onClick={() => downloadCsv(sorted, "marine-data.csv")}>Export CSV</Button>
           <Button asChild><a href="/data-explorer/full">Open full view</a></Button>
         </div>
       </div>
