@@ -10,6 +10,8 @@ const SAMPLE_TYPES = ["DNA", "Water Sample", "Fish Catch", "Plankton", "Sediment
 
 export default function Upload() {
   const { toast } = useToast();
+  const { user } = useAuth();
+  const navigate = useNavigate();
   const [speciesName, setSpeciesName] = useState("");
   const [scientificName, setScientificName] = useState("");
   const [zone, setZone] = useState("");
