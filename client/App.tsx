@@ -36,7 +36,7 @@ const App = () => (
                 path="/data-explorer/full"
                 element={<DataExplorerFull />}
               />
-              <Route path="/upload" element={<Upload />} />
+              <Route path="/upload" element={<RequireAuth><Upload /></RequireAuth>} />
               <Route
                 path="/ai-insights"
                 element={
