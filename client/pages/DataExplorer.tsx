@@ -109,7 +109,13 @@ function Filters({
         <Button
           variant="ghost"
           onClick={() => {
-            const initial = { species: "", zone: "", sampleType: "", from: "", to: "" };
+            const initial = {
+              species: "",
+              zone: "",
+              sampleType: "",
+              from: "",
+              to: "",
+            };
             setState(initial);
             onChange(initial);
           }}
