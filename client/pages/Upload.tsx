@@ -21,6 +21,11 @@ export default function Upload() {
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
+    if (!user) {
+      toast({ title: "Please login", description: "You must be logged in before uploading data." });
+      navigate("/login?redirect=/upload");
+      return;
+    }
     if (!speciesName || !scientificName || !zone || !location || !sampleType) {
       toast({ title: "Missing fields", description: "Please fill all fields before submitting." });
       return;
