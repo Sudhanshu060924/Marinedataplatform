@@ -16,6 +16,7 @@ import Signup from "@/pages/Signup";
 import { AuthProvider } from "@/context/AuthContext";
 import DataExplorer, { DataExplorerFull } from "@/pages/DataExplorer";
 import Upload from "@/pages/Upload";
+import RequireAuth from "@/components/auth/RequireAuth";
 
 const queryClient = new QueryClient();
 
