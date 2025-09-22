@@ -4,9 +4,11 @@ import { Link } from "react-router-dom";
 export default function Placeholder({
   title,
   description,
+  externalHref,
 }: {
   title: string;
   description?: string;
+  externalHref?: string;
 }) {
   return (
     <div className="mx-auto max-w-2xl text-center py-16">
