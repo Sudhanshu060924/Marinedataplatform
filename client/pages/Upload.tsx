@@ -2,6 +2,8 @@ import { useState, FormEvent } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const ZONES = ["Andaman Sea", "Arabian Sea", "Bay of Bengal", "Indian Ocean", "Laccadive Sea"];
 const SAMPLE_TYPES = ["DNA", "Water Sample", "Fish Catch", "Plankton", "Sediment"];
