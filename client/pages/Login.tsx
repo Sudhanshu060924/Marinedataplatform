@@ -1,19 +1,27 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useAuth } from "@/context/AuthContext";
-import { FormEvent, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { FormEvent, useMemo, useState } from "react";
+import { useNavigate, Link, useSearchParams } from "react-router-dom";
 
 export default function Login() {
   const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [params] = useSearchParams();
+
+  const redirectTo = useMemo(() => {
+    const raw = params.get("redirect") || "/";
+    // Prevent open redirects: only allow same-site path navigation
+    if (!raw.startsWith("/")) return "/";
+    return raw;
+  }, [params]);
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
     login(email || "user@example.com");
-    navigate("/");
+    navigate(redirectTo);
   };
 
   return (
@@ -49,7 +57,7 @@ export default function Login() {
       </form>
       <p className="mt-4 text-sm text-muted-foreground">
         No account?{" "}
-        <Link to="/signup" className="text-primary hover:underline">
+        <Link to={redirectTo === "/" ? "/signup" : `/signup?redirect=${encodeURIComponent(redirectTo)}`} className="text-primary hover:underline">
           Sign up
         </Link>
       </p>
