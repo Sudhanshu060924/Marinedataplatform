@@ -56,7 +56,14 @@ export default function Signup() {
       </form>
       <p className="mt-4 text-sm text-muted-foreground">
         Already have an account?{" "}
-        <Link to={redirectTo === "/" ? "/login" : `/login?redirect=${encodeURIComponent(redirectTo)}`} className="text-primary hover:underline">
+        <Link
+          to={
+            redirectTo === "/"
+              ? "/login"
+              : `/login?redirect=${encodeURIComponent(redirectTo)}`
+          }
+          className="text-primary hover:underline"
+        >
           Login
         </Link>
       </p>
