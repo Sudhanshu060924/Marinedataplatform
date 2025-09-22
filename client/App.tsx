@@ -15,6 +15,7 @@ import Login from "@/pages/Login";
 import Signup from "@/pages/Signup";
 import { AuthProvider } from "@/context/AuthContext";
 import DataExplorer, { DataExplorerFull } from "@/pages/DataExplorer";
+import Upload from "@/pages/Upload";
 
 const queryClient = new QueryClient();
 
