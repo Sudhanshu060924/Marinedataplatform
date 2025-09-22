@@ -1,19 +1,26 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useAuth } from "@/context/AuthContext";
-import { FormEvent, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { FormEvent, useMemo, useState } from "react";
+import { useNavigate, Link, useSearchParams } from "react-router-dom";
 
 export default function Signup() {
   const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [params] = useSearchParams();
+
+  const redirectTo = useMemo(() => {
+    const raw = params.get("redirect") || "/";
+    if (!raw.startsWith("/")) return "/";
+    return raw;
+  }, [params]);
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
     login(email || "user@example.com");
-    navigate("/");
+    navigate(redirectTo);
   };
 
   return (
@@ -49,7 +56,7 @@ export default function Signup() {
       </form>
       <p className="mt-4 text-sm text-muted-foreground">
         Already have an account?{" "}
-        <Link to="/login" className="text-primary hover:underline">
+        <Link to={redirectTo === "/" ? "/login" : `/login?redirect=${encodeURIComponent(redirectTo)}`} className="text-primary hover:underline">
           Login
         </Link>
       </p>
