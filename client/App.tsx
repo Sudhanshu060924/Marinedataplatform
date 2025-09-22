@@ -35,15 +35,7 @@ const App = () => (
                 path="/data-explorer/full"
                 element={<DataExplorerFull />}
               />
-              <Route
-                path="/upload"
-                element={
-                  <Placeholder
-                    title="Upload Data"
-                    description="CSV/Excel upload form with success toast coming next."
-                  />
-                }
-              />
+              <Route path="/upload" element={<Upload />} />
               <Route
                 path="/ai-insights"
                 element={
