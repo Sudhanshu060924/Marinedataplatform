@@ -42,7 +42,8 @@ const App = () => (
                 element={
                   <Placeholder
                     title="AI Insights"
-                    description="Insight cards and trend projection chart coming next."
+                    description="Currently We are working on this."
+                    externalHref="https://4424a176b1894a15b261d7c4e770838e-9fd98def412d4ac0b5a0a85eb.fly.dev/"
                   />
                 }
               />
