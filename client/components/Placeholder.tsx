@@ -24,7 +24,11 @@ export default function Placeholder({
       )}
       <div className="flex items-center justify-center gap-3">
         <Button asChild variant="secondary">
-          <Link to="/">Go Home</Link>
+          {externalHref ? (
+            <a href={externalHref} target="_blank" rel="noreferrer">Go Home</a>
+          ) : (
+            <Link to="/">Go Home</Link>
+          )}
         </Button>
         <Button asChild>
           <Link to="/dashboard">View Dashboard</Link>
