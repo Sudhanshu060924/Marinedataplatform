@@ -24,9 +24,14 @@ function Filters({
     () => Array.from(new Set(rows.map((r) => r.Zone))).sort(),
     [rows],
   );
+  const sampleTypes = useMemo(
+    () => Array.from(new Set(rows.map((r) => r["Sample Type"]))).sort(),
+    [rows],
+  );
   const [state, setState] = useState<FilterState>({
     species: "",
     zone: "",
+    sampleType: "",
     from: "",
     to: "",
   });
@@ -38,7 +43,7 @@ function Filters({
   };
 
   return (
-    <div className="grid gap-3 md:grid-cols-4">
+    <div className="grid gap-3 md:grid-cols-5">
       <div>
         <label className="block text-sm font-medium mb-1">Species</label>
         <select
@@ -70,6 +75,21 @@ function Filters({
         </select>
       </div>
       <div>
+        <label className="block text-sm font-medium mb-1">Sample Type</label>
+        <select
+          className="h-10 w-full rounded-md border px-3 bg-background"
+          value={state.sampleType}
+          onChange={(e) => update({ sampleType: e.target.value })}
+        >
+          <option value="">All</option>
+          {sampleTypes.map((t) => (
+            <option key={t} value={t}>
+              {t}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div>
         <label className="block text-sm font-medium mb-1">From</label>
         <Input
           type="date"
@@ -85,12 +105,13 @@ function Filters({
           onChange={(e) => update({ to: e.target.value })}
         />
       </div>
-      <div className="md:col-span-4">
+      <div className="md:col-span-5">
         <Button
           variant="ghost"
           onClick={() => {
-            setState({ species: "", zone: "", from: "", to: "" });
-            onChange({ species: "", zone: "", from: "", to: "" });
+            const initial = { species: "", zone: "", sampleType: "", from: "", to: "" };
+            setState(initial);
+            onChange(initial);
           }}
         >
           Reset
@@ -103,6 +124,7 @@ function Filters({
 interface FilterState {
   species: string;
   zone: string;
+  sampleType: string;
   from: string;
   to: string;
 }
@@ -111,6 +133,7 @@ function applyFilters(rows: Row[], f: FilterState) {
   return rows.filter((r) => {
     if (f.species && r["Species Name"] !== f.species) return false;
     if (f.zone && r.Zone !== f.zone) return false;
+    if (f.sampleType && r["Sample Type"] !== f.sampleType) return false;
     if (f.from && new Date(r.Date) < new Date(f.from)) return false;
     if (f.to && new Date(r.Date) > new Date(f.to)) return false;
     return true;
